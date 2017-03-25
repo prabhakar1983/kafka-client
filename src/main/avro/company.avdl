@@ -1,0 +1,7 @@
+@namespace("com.learning.domain.avdl")
+protocol CompanyProtocol{
+  record Company {
+    string companyName;
+    int year;
+  }
+}

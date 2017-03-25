@@ -1,6 +1,5 @@
-package com.learning;
+package com.learning.consumer;
 
-import com.sun.tools.javac.jvm.Gen;
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -8,7 +7,6 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 import java.util.Arrays;
-import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -16,7 +14,7 @@ import java.util.Properties;
  */
 public class ConsumerClient {
 
-    public static String TOPIC_NAME= "newTopic";
+    public static String TOPIC_NAME= "specificRecordExampleAvdl";
 
     public static void main(String args []) {
         Properties props = new Properties();

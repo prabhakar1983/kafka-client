@@ -1,0 +1,12 @@
+{
+	"name": "Company",
+	"type": "record",
+	"namespace": "com.learning.domain.avsc",
+	"fields": [{
+		"name": "companyName",
+		"type": "string"
+	}, {
+		"name": "year",
+		"type": "int"
+	}]
+}

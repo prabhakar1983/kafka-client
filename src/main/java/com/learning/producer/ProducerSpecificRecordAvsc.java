@@ -1,9 +1,7 @@
-package com.learning;
+package com.learning.producer;
 
-import org.apache.avro.Schema;
-import org.apache.avro.generic.GenericData;
+import com.learning.domain.avsc.Company;
 import org.apache.avro.generic.GenericRecord;
-import org.apache.avro.util.Utf8;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
@@ -13,9 +11,9 @@ import java.util.Properties;
  * Hello world!
  *
  */
-public class ProducerClient
+public class ProducerSpecificRecordAvsc
 {
-    public static String TOPIC_NAME= "newTopic";
+    public static String TOPIC_NAME= "specificRecordExampleAvsc";
 
     public static void main(String [] args) {
 
@@ -28,21 +26,12 @@ public class ProducerClient
         config.put("key.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
         config.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
 
-        String schemaDescription = " {    \n"
-                + " \"name\": \"company\", \n"
-                + " \"type\": \"record\",\n" + " \"fields\": [\n"
-                + "   {\"name\": \"companyName\", \"type\": \"string\"},\n"
-                + "   {\"name\": \"year\", \"type\": \"int\"} ]\n" + "}";
-
-        Schema schema = Schema.parse(schemaDescription);
-
-        GenericRecord company = new GenericData.Record(schema);
-        company.put("companyName", new Utf8("cognizant"));
-        company.put("year", 1996);
 
         KafkaProducer<String, GenericRecord> producer = new KafkaProducer<String, GenericRecord>(config);
 
-        ProducerRecord<String, GenericRecord> message = new ProducerRecord<String, GenericRecord>(TOPIC_NAME, "firstCompany", company);
+        Company companyAvdl = Company.newBuilder().setCompanyName("hopefullybetterwork").setYear(2026).build();
+
+        ProducerRecord<String, GenericRecord> message = new ProducerRecord<String, GenericRecord>(TOPIC_NAME, "thirdCompany", companyAvdl);
         int i=0;
         while (i < 500) {
             producer.send(message);
