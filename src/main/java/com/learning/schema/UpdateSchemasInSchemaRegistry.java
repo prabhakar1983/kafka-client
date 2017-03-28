@@ -69,7 +69,7 @@ public class UpdateSchemasInSchemaRegistry {
         }
     }
 
-    private static UserEvent getUserEvent() {
+    private static UserSession getUserSession() {
         AccessLogEvent accessLog = AccessLogEvent.newBuilder()
                 .setApplicationRuntime("app")
                 .setLocalIp("IP")
@@ -99,21 +99,11 @@ public class UpdateSchemasInSchemaRegistry {
                 .setUrl("")
                 .build();
 
-        return UserEvent.newBuilder()
-                .setAccessLog(accessLog)
-                .setClientRequestId("")
-                .setCurrentPageViewId("")
+        return UserSession.newBuilder()
                 .setHeader(eventHeader)
-                .setParentPageViewId("")
-                .setPayload("")
-                .setPayloadMap(null)
-                .setRequestInfo(requestInfo)
-                .setSessionId("prasessionid")
-                .setType("")
-                .setVisitorId("visiptra")
                 .build();
     }
-    
+
     private static UserEvent getUserEvent() {
         AccessLogEvent accessLog = AccessLogEvent.newBuilder()
                 .setApplicationRuntime("app")
