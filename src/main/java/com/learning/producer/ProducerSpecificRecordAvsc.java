@@ -16,18 +16,7 @@ public class ProducerSpecificRecordAvsc
     public static String TOPIC_NAME= "specificRecordExampleAvsc";
 
     public static void main(String [] args) {
-
-
-
-        Properties config = new Properties();
-        config.put("client.id", "dineshClient");
-        config.put("bootstrap.servers", "localhost:9092");
-        config.put("schema.registry.url", "http://localhost:8081");
-        config.put("key.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
-        config.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
-
-
-        KafkaProducer<String, GenericRecord> producer = new KafkaProducer<String, GenericRecord>(config);
+        KafkaProducer<String, GenericRecord> producer = getProducer();
 
         Company companyAvdl = Company.newBuilder().setCompanyName("hopefullybetterwork").setYear(2026).build();
 
@@ -38,5 +27,16 @@ public class ProducerSpecificRecordAvsc
             i++;
         }
 
+    }
+
+    public static KafkaProducer<String, GenericRecord> getProducer(){
+        Properties config = new Properties();
+        config.put("client.id", "prabhakarClient");
+        config.put("bootstrap.servers", "astkaf100:9092");
+        config.put("schema.registry.url", "http://astkaf100:8081");
+        config.put("key.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
+        config.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
+        KafkaProducer<String, GenericRecord> producer = new KafkaProducer<String, GenericRecord>(config);
+        return producer;
     }
 }

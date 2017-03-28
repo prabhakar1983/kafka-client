@@ -22,11 +22,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="kafka-avro-examples" />
         <module name="kafka-client" />
+        <module name="kafka-helper-tools" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="kafka-avro-examples" target="1.8" />
       <module name="kafka-client" target="1.8" />
+      <module name="kafka-helper-tools" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

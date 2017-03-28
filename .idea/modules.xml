@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/kafka-client.iml" filepath="$PROJECT_DIR$/kafka-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kafka-avro-examples.iml" filepath="$PROJECT_DIR$/kafka-avro-examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../digitalplatform/kafka-helper-tools/kafka-helper-tools.iml" filepath="$PROJECT_DIR$/../../digitalplatform/kafka-helper-tools/kafka-helper-tools.iml" />
     </modules>
   </component>
 </project>

@@ -20,13 +20,7 @@ public class ProducerGenericRecord
     public static void main(String [] args) {
 
 
-
-        Properties config = new Properties();
-        config.put("client.id", "dineshClient");
-        config.put("bootstrap.servers", "localhost:9092");
-        config.put("schema.registry.url", "http://localhost:8081");
-        config.put("key.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
-        config.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
+        KafkaProducer<String, GenericRecord> producer = getProducer();
 
         String schemaDescription = " {    \n"
                 + " \"name\": \"Company\", \n"
@@ -40,7 +34,7 @@ public class ProducerGenericRecord
         company.put("companyName", new Utf8("cognizant"));
         company.put("year", 1996);
 
-        KafkaProducer<String, GenericRecord> producer = new KafkaProducer<String, GenericRecord>(config);
+
 
         ProducerRecord<String, GenericRecord> message = new ProducerRecord<String, GenericRecord>(TOPIC_NAME, "firstCompany", company);
         int i=0;
@@ -49,5 +43,16 @@ public class ProducerGenericRecord
             i++;
         }
 
+    }
+
+    public static KafkaProducer<String, GenericRecord> getProducer(){
+        Properties config = new Properties();
+        config.put("client.id", "prabhakarClient");
+        config.put("bootstrap.servers", "astkaf100:9092");
+        config.put("schema.registry.url", "http://astkaf100:8081");
+        config.put("key.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
+        config.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
+        KafkaProducer<String, GenericRecord> producer = new KafkaProducer<String, GenericRecord>(config);
+        return producer;
     }
 }
